@@ -1,17 +1,17 @@
 import tkinter as tki
 
-# Creating a new window and configurations
+#----------- Creating a new window and configurations---------#
 window = tki.Tk()
 window.title("Widget Examples")
 window.minsize(width=500, height=500)
 
-# Labels
+#----------- Labels---------#
 label = tki.Label(text="This is old text")
 label.config(text="This is new text")
 label.pack()
 
 
-# Buttons
+#----------- Buttons ---------#
 def action():
     print("Do something")
 
@@ -20,7 +20,7 @@ def action():
 button = tki.Button(text="Click Me", command=action)
 button.pack()
 
-# Entries
+#-----------  Entries---------#
 entry = tki.Entry(width=30)
 # Add some text to begin with
 entry.insert(tki.END, string="Some text to begin with.")
@@ -28,7 +28,7 @@ entry.insert(tki.END, string="Some text to begin with.")
 print(entry.get())
 entry.pack()
 
-# Text
+#----------- Text ---------#
 text = tki.Text(height=5, width=30)
 # Puts cursor in textbox.
 text.focus()
@@ -39,7 +39,7 @@ print(text.get("1.0", tki.END))
 text.pack()
 
 
-# Spinbox
+#----------- Spinbox ---------#
 def spinbox_used():
     # gets the current value in spinbox.
     print(spinbox.get())
@@ -49,7 +49,7 @@ spinbox = tki.Spinbox(from_=0, to=10, width=5, command=spinbox_used)
 spinbox.pack()
 
 
-# Scale
+#----------- Scale ---------#
 # Called with current scale value.
 def scale_used(value):
     print(value)
@@ -58,8 +58,7 @@ def scale_used(value):
 scale = tki.Scale(from_=0, to=100, command=scale_used)
 scale.pack()
 
-
-# Checkbutton
+#----------- Checkbutton ---------#
 def checkbutton_used():
     # Prints 1 if On button checked, otherwise 0.
     print(checked_state.get())
@@ -72,7 +71,7 @@ checked_state.get()
 checkbutton.pack()
 
 
-# Radiobutton
+#----------- Radiobutton ---------#
 def radio_used():
     print(radio_state.get())
 
@@ -85,7 +84,7 @@ radiobutton1.pack()
 radiobutton2.pack()
 
 
-# Listbox
+#----------- Listbox ---------#
 def listbox_used(event):
     # Gets current selection from listbox
     print(listbox.get(listbox.curselection()))
@@ -98,3 +97,12 @@ for item in fruits:
 listbox.bind("<<ListboxSelect>>", listbox_used)
 listbox.pack()
 window.mainloop()
+#----------- Canvas ---------#
+my_img = tki.PhotoImage(file='filepath')
+canvas = tki.Canvas(width=210, height=213, highlightthickness=0)
+canvas.create_image(xcoor, ycoor, my_img)
+canvas.create_text(xcoor, ycoor, text='PlaceHolder')
+
+# Widget inside Canvas
+b = ttk.Button(canvas, text='Implode!') 
+canvas.create_image(xcoor, ycoor)
